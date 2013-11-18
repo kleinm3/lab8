@@ -7,6 +7,12 @@
     buttons.
 */
 
+
 function createCartView(config) {
-    
+	config.cartModel = config.model;
+	config.templateView = createCartItemView(config);
+    var view = createTemplateListView(config);
+	view.afterRender = function() {
+	this.totalPrice.html(this.model.getTotalPrice());
+	}; //
 } //createCartView()
